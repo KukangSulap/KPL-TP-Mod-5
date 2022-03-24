@@ -14,11 +14,24 @@ class SayaTubeVideo {
         Random rand = new Random();
         PlayCount = 0;
         id = rand.nextInt(99999);
-        title = tenka;
+
+        if (tenka.length() < 100 && tenka.length() > 0) {
+            title = tenka;
+        } else {
+            title = "";
+        }
     }
 
     public void IncreasePlayCount(int PlayCount) {
-        this.PlayCount += PlayCount;
+        //setara checked di C#
+        int result = this.PlayCount;
+        if (result != this.PlayCount) {
+            throw new RuntimeException("play count reach limit: " + PlayCount);
+        }
+
+        if (PlayCount <= 100000000){
+            this.PlayCount += PlayCount;
+        }
     }
 
     public void PrintVideoDetails() {
